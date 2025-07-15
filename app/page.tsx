@@ -188,7 +188,7 @@ export default function Home() {
 
       <div className="mx-auto w-full h-screen flex flex-col items-center justify-center max-w-3xl">
         <div className="text-center flex flex-col gap-3 w-fit items-left text-black">
-          <h1 className="text-[72px] text-left max-w-[250px] leading-[64px] !font-doto font-bold">
+          <h1 className="text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
             A NEW DAY ONE
           </h1>
           <p className="font-light text-3xl text-left">Base's Next Chapter</p>
