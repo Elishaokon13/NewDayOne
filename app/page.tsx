@@ -176,9 +176,9 @@ export default function Home() {
               height={32}
               className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
             />
-            <span className="font-medium text-black text-sm sm:text-base truncate">
+            {/* <span className="font-medium text-black text-sm sm:text-base truncate">
               Base Challenge
-            </span>
+            </span> */}
           </div>
           <div className="flex-shrink-0">
             <WalletConnect />
