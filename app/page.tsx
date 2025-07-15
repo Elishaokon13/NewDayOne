@@ -201,7 +201,7 @@ export default function Home() {
             Mint your POAP to commemorate participating in the Build on Base
             Challenge by Borderless Workshops!
           </p> */}
-          <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a day!</button>
+          <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a Seat!</button>
         </div>
       </div>
     </main>
