@@ -1,7 +1,7 @@
 import React from "react";
 import DynamicSVG from "./DynamicSVG";
 
-export default function ImageExport() {
+export default function ImageExport({ image, username }: any) {
   return (
     <div className="w-[660px] h-[600px] bg-white z-20 border p-5 text-black/80">
       <div className="flex flex-col w-full h-full items-center justify-between gap-6">
@@ -18,9 +18,11 @@ export default function ImageExport() {
                 className="w-[120px] absolute right-0 -top-4"
               />
               <p className="text-[36px] font-semibold">Hi, I'm Defidevrel</p>
-              <p className="text-[14px] font-light">I am exited to attend</p>
-            </div> */}
+              </div> */}
             <div className="space-y-2">
+              <p className="text-[16px] text-[#0000ff] !italic font-light">
+                I will be attending...
+              </p>
               <h1 className="text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
                 A NEW DAY ONE
               </h1>
@@ -39,10 +41,10 @@ export default function ImageExport() {
               <div className="absolute top-0 left-0">
                 <div className="w-11 h-11 rounded-xl bg-[#ffda54]"></div>
               </div>
-              <DynamicSVG bgImage={"/bggg.png"} width="full" height="full" />
+              <DynamicSVG bgImage={image} width="full" height="full" />
             </div>
             <div className="w-full p-2 mt-2 rounded-xl bg-[#0000ff] text-center font-doto font-bold uppercase text-white text-[16px]">
-              @Oxbryte
+              @{username}
             </div>
           </div>
         </div>

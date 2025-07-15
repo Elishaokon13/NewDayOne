@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { sdk } from "@farcaster/miniapp-sdk";
 import { X } from "lucide-react";
+import PrintImage from "./PrintImage";
 
 interface UserContext {
   fid: number;
@@ -13,6 +14,7 @@ export default function Modal({ setModal }: any) {
   const [user, setUser] = useState<UserContext | null>(null);
   const [image, setImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [save, setSave] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -44,7 +46,7 @@ export default function Modal({ setModal }: any) {
           </div>
         </div>
         <label className="flex flex-col gap-2">
-          <span className="font-medium text-black/70">Username</span>
+          <span className="font-medium text-black/70">Farcaster username</span>
           <input
             type="text"
             className="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -56,14 +58,14 @@ export default function Modal({ setModal }: any) {
         <div className="flex flex-col gap-2">
           <span className="font-medium text-black/70">Profile Image</span>
           {image ? (
-            <div className="w-fit space-y-2">
+            <div className="w-fit relative">
               <img
                 src={image}
                 alt="Preview"
                 className="w-40 h-40 rounded-xl object-cover border border-gray-200 shadow"
               />
               <button
-                className="px-6 py-2 w-full bg-[#0000ff] font-light text-white rounded-lg font-medium hover:bg-blue-700 transition"
+                className="absolute bottom-2 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#0000ff]/80 font-light text-white rounded-lg font-medium hover:bg-blue-700 transition backdrop-blur-sm"
                 onClick={() => fileInputRef.current?.click()}
               >
                 Upload
@@ -92,10 +94,14 @@ export default function Modal({ setModal }: any) {
             </div>
           )}
         </div>
-        <button className="px-7 py-3 bg-[#0000FF] font-light text-white w-full hover:bg-blue-700 rounded-xl">
+        <button
+          className="px-7 py-3 bg-[#0000FF] font-light text-white w-full hover:bg-blue-700 rounded-xl"
+          onClick={() => setSave(true)}
+        >
           Save a day!
         </button>
       </div>
+      {save && <PrintImage image={image} username={username} />}
     </div>
   );
 }
