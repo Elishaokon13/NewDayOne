@@ -165,10 +165,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
-      <div className="absolute -bottom-10 md:-bottom-60 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
+      <div className="absolute -bottom-10 md:-bottom-80 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
         <img src="/globe2.svg" alt="" />
       </div>
-      <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-black/10 z-50">
+      {/* <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-black/10 z-50">
         <div className="max-w-3xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2 min-w-0">
             <Image
@@ -186,7 +186,7 @@ export default function Home() {
             <WalletConnect />
           </div>
         </div>
-      </header>
+      </header> */}
 
       <div className="mx-auto w-full h-screen flex flex-col items-center justify-center max-w-3xl">
         <div className="text-center flex flex-col gap-3 w-fit items-left text-black">
