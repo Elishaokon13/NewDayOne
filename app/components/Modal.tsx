@@ -19,7 +19,6 @@ export default function Modal({ setModal }: any) {
       const { user } = await sdk.context;
       setUser(user);
     };
-
     fetchUser();
   }, []);
 
@@ -36,13 +35,15 @@ export default function Modal({ setModal }: any) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm text-black">
-      <div className="bg-white rounded-xl shadow-lg max-w-[420px] w-full p-8 flex flex-col gap-3">
+      <div className="bg-white rounded-xl shadow-lg max-w-[420px] w-full p-8 flex flex-col gap-5">
         <div className="flex items-center justify-between gap-5">
           <h2 className="text-2xl font-semibold">Save a sit!</h2>
           <div className="cursor-pointer" onClick={() => setModal(false)}>
             <X size={25} />
           </div>
         </div>
+
+        {/* Username Input */}
         <label className="flex flex-col gap-2">
           <span className="font-medium text-black/70">Username</span>
           <input
@@ -53,6 +54,8 @@ export default function Modal({ setModal }: any) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
+
+        {/* Image Upload */}
         <div className="flex flex-col gap-2">
           <span className="font-medium text-black/70">Profile Image</span>
           {image ? (
@@ -92,6 +95,46 @@ export default function Modal({ setModal }: any) {
             </div>
           )}
         </div>
+
+        {/* Live SVG Preview */}
+        {username && image && (
+          <div className="mt-4 border rounded-lg p-4 bg-gray-50">
+            <svg
+              width="300"
+              height="300"
+              viewBox="0 0 1080 1080"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <clipPath id="circleClip">
+                  <circle cx="540" cy="300" r="120" />
+                </clipPath>
+              </defs>
+              <rect width="1080" height="1080" fill="white" />
+              <image
+                href={image}
+                x="420"
+                y="180"
+                width="240"
+                height="240"
+                clipPath="url(#circleClip)"
+                preserveAspectRatio="xMidYMid slice"
+              />
+              <text
+                x="540"
+                y="450"
+                fontSize="48"
+                textAnchor="middle"
+                fill="#0000FF"
+                fontFamily="Arial, sans-serif"
+              >
+                {username}
+              </text>
+            </svg>
+          </div>
+        )}
+
+        {/* Submit Button */}
         <button className="px-7 py-3 bg-[#0000FF] font-light text-white w-full hover:bg-blue-700 rounded-xl">
           Save a day!
         </button>
