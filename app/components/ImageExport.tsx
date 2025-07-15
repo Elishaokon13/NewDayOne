@@ -20,7 +20,7 @@ export default function ImageExport({ image, username }: any) {
               <p className="text-[36px] font-semibold">Hi, I'm Defidevrel</p>
               </div> */}
             <div className="space-y-2">
-              <p className="text-[16px] text-[#0000ff] !italic font-light">
+              <p className="text-[20px] text-[#0000ff] font-bold">
                 I will be attending...
               </p>
               <h1 className=" text-[32px] md:text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
