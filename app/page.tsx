@@ -163,7 +163,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
-      <div className="absolute -bottom-60 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
+      <div className="absolute -bottom-80 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
         <img src="/globe2.svg" alt="" />
       </div>
       <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-black/10 z-50">
@@ -187,15 +187,21 @@ export default function Home() {
       </header>
 
       <div className="mx-auto w-full h-screen flex flex-col items-center justify-center max-w-3xl">
-        <div className="text-center flex flex-col gap-3 w-fit items-center text-black">
+        <div className="text-center flex flex-col gap-3 w-fit items-left text-black">
           <h1 className="text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
             A NEW DAY ONE
           </h1>
-          <p className="font-light text-2xl">Base's Next Chapter</p>
-          <p className="text-lg font-light">
+          <p className="font-light text-3xl text-left">Base's Next Chapter</p>
+          <div className="flex w-fit gap-2 items-center">
+            <div className="w-[180px] bg-[#0000ff] h-2"></div>
+            <div className="w-[40%] bg-[#f2accc] h-2"></div>
+            <div className="w-[20%] bg-[#ffda59] h-2"></div>
+          </div>
+          {/* <p className="text-md text-left max-w-[340px] font-light">
             Mint your POAP to commemorate participating in the Build on Base
             Challenge by Borderless Workshops!
-          </p>
+          </p> */}
+          <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a day!</button>
         </div>
       </div>
     </main>
