@@ -165,24 +165,24 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0052FF] text-white">
       <header className="fixed top-0 left-0 right-0 bg-[#0052FF]/80 backdrop-blur-sm border-b border-white/10 z-50">
-  <div className="max-w-2xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
-    <div className="flex items-center gap-2 min-w-0">
-      <Image
-        src="/logo.png"
-        alt="Logo"
-        width={32}
-        height={32}
-        className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
-      />
-      <span className="font-medium text-sm sm:text-base truncate">
-        Base Challenge
-      </span>
-    </div>
-    <div className="flex-shrink-0">
-      <WalletConnect />
-    </div>
-  </div>
-</header>
+        <div className="max-w-2xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 min-w-0">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={32}
+              height={32}
+              className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
+            />
+            <span className="font-medium text-sm sm:text-base truncate">
+              Base Challenge
+            </span>
+          </div>
+          <div className="flex-shrink-0">
+            <WalletConnect />
+          </div>
+        </div>
+      </header>
 
       <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-12">
         <div className="text-center mb-8">
