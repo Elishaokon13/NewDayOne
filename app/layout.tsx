@@ -2,6 +2,7 @@ import "./theme.css";
 import "@coinbase/onchainkit/styles.css";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import React from "react";
 // Supports weights 100-900
 import '@fontsource-variable/doto';
 import { Providers } from "./providers";
@@ -13,10 +14,10 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const URL =
-    process.env.NEXT_PUBLIC_URL || "https://bob-livestream.vercel.app/";
+    process.env.NEXT_PUBLIC_URL || "https://newdayone.vercel.app/";
   return {
     title: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
-    description: "Mint your POAP for attending the BUILD ON BASE workshop",
+    description: "A New Day One is coming on Base",
     other: {
       "fc:frame": JSON.stringify({
         version: process.env.NEXT_PUBLIC_VERSION,
