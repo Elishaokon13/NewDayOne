@@ -595,6 +595,9 @@ video {
 .w-full{
   width: 100%;
 }
+.min-w-0{
+  min-width: 0px;
+}
 .max-w-2xl{
   max-width: 42rem;
 }
@@ -606,6 +609,9 @@ video {
 }
 .flex-1{
   flex: 1 1 0%;
+}
+.flex-shrink-0{
+  flex-shrink: 0;
 }
 @keyframes spin{
 
@@ -681,6 +687,11 @@ video {
 }
 .overflow-y-auto{
   overflow-y: auto;
+}
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .rounded-full{
   border-radius: 9999px;
@@ -819,6 +830,9 @@ video {
 .pt-24{
   padding-top: 6rem;
 }
+.pt-20{
+  padding-top: 5rem;
+}
 .text-center{
   text-align: center;
 }
@@ -849,6 +863,10 @@ video {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .font-bold{
   font-weight: 700;
@@ -1166,6 +1184,14 @@ body {
 
 @media (min-width: 640px){
 
+  .sm\:h-8{
+    height: 2rem;
+  }
+
+  .sm\:w-8{
+    width: 2rem;
+  }
+
   .sm\:max-w-md{
     max-width: 28rem;
   }
@@ -1174,8 +1200,21 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sm\:gap-4{
+    gap: 1rem;
+  }
+
   .sm\:p-6{
     padding: 1.5rem;
+  }
+
+  .sm\:py-4{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .sm\:pt-24{
+    padding-top: 6rem;
   }
 
   .sm\:text-base{
@@ -1191,6 +1230,21 @@ body {
   .sm\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -4229,6 +4283,9 @@ video {
 .w-full {
   width: 100%;
 }
+.min-w-0 {
+  min-width: 0px;
+}
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -4240,6 +4297,9 @@ video {
 }
 .flex-1 {
   flex: 1 1 0%;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 @keyframes spin {
 
@@ -4315,6 +4375,11 @@ video {
 }
 .overflow-y-auto {
   overflow-y: auto;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -4453,6 +4518,9 @@ video {
 .pt-24 {
   padding-top: 6rem;
 }
+.pt-20 {
+  padding-top: 5rem;
+}
 .text-center {
   text-align: center;
 }
@@ -4483,6 +4551,10 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .font-bold {
   font-weight: 700;
@@ -4689,6 +4761,14 @@ body {
 
 @media (min-width: 640px) {
 
+  .sm\:h-8 {
+    height: 2rem;
+  }
+
+  .sm\:w-8 {
+    width: 2rem;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
   }
@@ -4697,8 +4777,21 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sm\:gap-4 {
+    gap: 1rem;
+  }
+
   .sm\:p-6 {
     padding: 1.5rem;
+  }
+
+  .sm\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .sm\:pt-24 {
+    padding-top: 6rem;
   }
 
   .sm\:text-base {
@@ -4714,6 +4807,21 @@ body {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
