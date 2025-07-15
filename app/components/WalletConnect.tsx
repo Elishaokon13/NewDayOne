@@ -52,15 +52,16 @@ export function WalletConnect() {
       </button>
       {isOpen && (
         <div
-          className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4"
           onClick={() => setIsOpen(false)}
-          style={{ backdropFilter: 'blur(5px)' }} // Optional: Adds a subtle blur to the background
+          style={{ backdropFilter: 'blur(5px)' }} // Optional blur effect
         >
           <div
-            className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full max-w-xs sm:max-w-md max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full max-w-xs sm:max-w-md max-h-[90vh] overflow-y-auto transform translate-y-0"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
+            style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} // Explicit centering
           >
             <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 text-center">
               {isFarcasterFrames ? 'Connect with Farcaster' : 'Choose a Wallet'}
