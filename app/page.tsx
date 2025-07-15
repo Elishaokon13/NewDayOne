@@ -7,6 +7,7 @@ import { WalletConnect } from "./components/WalletConnect";
 import Image from "next/image";
 import { sdk } from "@farcaster/miniapp-sdk";
 import Modal from "./components/Modal";
+import ImageExport from "./components/ImageExport";
 
 // Contract address
 const CONTRACT_ADDRESS =
@@ -210,6 +211,7 @@ export default function Home() {
             Save a day!
           </button>
         </div>
+      <ImageExport />
       </div>
       {modal && <Modal setModal={setModal} />}
     </main>
