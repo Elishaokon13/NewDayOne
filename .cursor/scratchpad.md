@@ -1,8 +1,8 @@
-# Base Minikit App for Onchain Summer - Project Planning
+# Sleek Marketing Agency Website - Project Planning
 
 ## Background and Motivation
 
-**Project Goal**: Build a viral Base Minikit app that will attract massive user engagement during Coinbase's Onchain Summer event.
+**Project Goal**: Create a super sleek, visually stunning marketing agency website using GSAP and Three.js that showcases creative excellence and attracts high-value clients.
 
 **Key Requirements**:
 - High scalability to handle lots of simultaneous users
