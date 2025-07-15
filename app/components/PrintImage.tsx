@@ -1,17 +1,21 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react"; // Added useState
 import ImageExport from "./ImageExport";
 import { toPng } from "html-to-image";
 import ImageExportDup from "./ImageExportDup";
 
 export default function PrintImage({ image, username }: any) {
   const imageExportRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(false); // New loading state
 
   const handleDownload = async () => {
     if (imageExportRef.current === null) {
+      alert("Error: Image reference not found.");
       return;
     }
+
+    setLoading(true); // Set loading to true
 
     try {
       // Create the image
@@ -27,14 +31,21 @@ export default function PrintImage({ image, username }: any) {
       link.download = `base-day-one-${username || "user"}.png`;
       link.href = dataUrl;
       link.click();
+
+      // Show success alert
+      alert("Image downloaded successfully!");
     } catch (error) {
       console.error("Error generating image:", error);
-      // Optionally show user-friendly error message
+      // Show error alert
+      alert("Failed to download image. Please try again.");
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
   const handleTwitterShare = async () => {
     if (imageExportRef.current === null) {
+      alert("Error: Image reference not found.");
       return;
     }
 
@@ -90,6 +101,7 @@ export default function PrintImage({ image, username }: any) {
 
   const handleFarcasterShare = async () => {
     if (imageExportRef.current === null) {
+      alert("Error: Image reference not found.");
       return;
     }
 
@@ -155,9 +167,12 @@ export default function PrintImage({ image, username }: any) {
           <div className="flex items-center gap-3">
             <button
               onClick={handleDownload}
-              className="px-7 py-4 bg-[#0000FF] font-light !text-sm text-white w-full hover:bg-blue-700 rounded-xl"
+              className={`px-7 py-4 bg-[#0000FF] font-light !text-sm text-white w-full rounded-xl ${
+                loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+              }`}
+              disabled={loading} // Disable button during loading
             >
-              Download
+              {loading ? "Downloading..." : "Download"} {/* Show loading text */}
             </button>
             {/* <button
               className=" px-3 py-3 bg-[#7c65c1] flex items-center hover:bg-[#7c65c1]/80 rounded-xl"
