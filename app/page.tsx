@@ -181,7 +181,7 @@ export default function Home() {
           <div className="flex-shrink-0">
             <WalletConnect />
           </div>
-        </FarcasterMiniApp>
+        </
       </header>
 
       <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-12">
