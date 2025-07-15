@@ -193,7 +193,7 @@ export default function Home() {
           </h1>
           <p className="font-light text-3xl text-left">Base's Next Chapter</p>
           <div className="flex w-fit gap-2 items-center">
-            <div className="w-[180px] bg-[#0000ff] h-2"></div>
+            <div className="w-[180px] bg-[#0000ff] h-1"></div>
             <div className="w-[40%] bg-[#f2accc] h-2"></div>
             <div className="w-[20%] bg-[#ffda59] h-2"></div>
           </div>
