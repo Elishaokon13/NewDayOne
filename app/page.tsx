@@ -6,6 +6,7 @@ import confetti from "canvas-confetti";
 import { WalletConnect } from "./components/WalletConnect";
 import Image from "next/image";
 import { sdk } from "@farcaster/miniapp-sdk";
+import Modal from "./components/Modal";
 
 // Contract address
 const CONTRACT_ADDRESS =
@@ -54,6 +55,7 @@ interface BasescanResponse {
 
 export default function Home() {
   const { address } = useAccount();
+  const [modal, setModal] = useState(false);
   const [hasMinted, setHasMinted] = useState<boolean>(false);
   const [justMinted, setJustMinted] = useState<boolean>(false);
   const [isMinting, setIsMinting] = useState<boolean>(false);
@@ -201,9 +203,19 @@ export default function Home() {
             Mint your POAP to commemorate participating in the Build on Base
             Challenge by Borderless Workshops!
           </p> */}
+<<<<<<< HEAD
           <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a Seat!</button>
+=======
+          <button
+            className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl"
+            onClick={() => setModal(true)}
+          >
+            Save a day!
+          </button>
+>>>>>>> e97e34d6839791e811b7917bf64e3f1493d2a609
         </div>
       </div>
+      {modal && <Modal setModal={setModal} />}
     </main>
   );
 }
