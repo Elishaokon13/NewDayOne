@@ -31,7 +31,7 @@ export function WalletConnect() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2 bg-white text-[#0052FF] font-medium rounded-lg hover:bg-white/90 transition-all duration-200"
+        className="px-4 py-2 bg-[#0000ff] text-]whitefont-medium rounded-lg hover:bg-gray-400 transition-all duration-200"
       >
         Connect Wallet
       </button>
@@ -52,9 +52,7 @@ export function WalletConnect() {
           ))}
         </div>
       )}
-      {error && (
-        <p className="mt-2 text-red-500 text-sm">{error.message}</p>
-      )}
+      {error && <p className="mt-2 text-red-500 text-sm">{error.message}</p>}
     </div>
   );
 }
