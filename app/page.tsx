@@ -1,36 +1,37 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { useAccount, useReadContract, useWriteContract } from 'wagmi';
-import confetti from 'canvas-confetti';
-import { WalletConnect } from './components/WalletConnect';
-import Image from 'next/image';
-import { sdk } from '@farcaster/miniapp-sdk';
+import React, { useEffect, useState } from "react";
+import { useAccount, useReadContract, useWriteContract } from "wagmi";
+import confetti from "canvas-confetti";
+import { WalletConnect } from "./components/WalletConnect";
+import Image from "next/image";
+import { sdk } from "@farcaster/miniapp-sdk";
 
 // Contract address
-const CONTRACT_ADDRESS = '0xc90Cf316E1A74Ea9da13E87d95Eda3d9281731a1'.toLowerCase() as `0x${string}`;
+const CONTRACT_ADDRESS =
+  "0xc90Cf316E1A74Ea9da13E87d95Eda3d9281731a1".toLowerCase() as `0x${string}`;
 
 // Contract ABI (simplified to just what we need)
 const contractABI = [
   {
     inputs: [],
-    name: 'mint',
+    name: "mint",
     outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    stateMutability: "nonpayable",
+    type: "function",
   },
   {
-    inputs: [{ internalType: 'address', name: '', type: 'address' }],
-    name: 'hasMinted',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
-    stateMutability: 'view',
-    type: 'function',
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "hasMinted",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
   },
 ] as const;
 
 // Basescan API endpoint
-const BASESCAN_API = 'https://api.basescan.org/api';
-const BASESCAN_API_KEY = process.env.NEXT_PUBLIC_BASESCAN_API_KEY || '';
+const BASESCAN_API = "https://api.basescan.org/api";
+const BASESCAN_API_KEY = process.env.NEXT_PUBLIC_BASESCAN_API_KEY || "";
 
 // Types for Basescan API response
 interface BasescanTransaction {
@@ -69,27 +70,25 @@ export default function Home() {
         const response = await fetch(
           `${BASESCAN_API}?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&sort=desc&apikey=${BASESCAN_API_KEY}`
         );
-        const data = await response.json() as BasescanResponse;
+        const data = (await response.json()) as BasescanResponse;
 
-        if (data.status === '1' && data.result) {
+        if (data.status === "1" && data.result) {
           const mintTxs = data.result.filter(
             (tx: BasescanTransaction) =>
-              tx.isError === '0' &&
-              tx.input.startsWith('0x1249c58b') &&
-              tx.txreceipt_status === '1'
+              tx.isError === "0" &&
+              tx.input.startsWith("0x1249c58b") &&
+              tx.txreceipt_status === "1"
           );
 
           setTotalMints(mintTxs.length);
-          const recent = mintTxs
-            .slice(0, 5)
-            .map((tx: BasescanTransaction) => ({
-              address: tx.from,
-              timestamp: parseInt(tx.timeStamp) * 1000,
-            }));
+          const recent = mintTxs.slice(0, 5).map((tx: BasescanTransaction) => ({
+            address: tx.from,
+            timestamp: parseInt(tx.timeStamp) * 1000,
+          }));
           setRecentMints(recent);
         }
       } catch (error) {
-        console.error('Error fetching transactions:', error);
+        console.error("Error fetching transactions:", error);
       }
     };
 
@@ -105,7 +104,7 @@ export default function Home() {
         setIsLoading(true);
         await sdk.actions.ready();
       } catch (error) {
-        console.error('Error initializing app:', error);
+        console.error("Error initializing app:", error);
       } finally {
         setIsLoading(false);
       }
@@ -118,7 +117,7 @@ export default function Home() {
   const { data: hasMintedData } = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: contractABI,
-    functionName: 'hasMinted',
+    functionName: "hasMinted",
     args: address ? [address as `0x${string}`] : undefined,
     query: { enabled: !!address },
   });
@@ -140,12 +139,12 @@ export default function Home() {
       await writeContract({
         address: CONTRACT_ADDRESS,
         abi: contractABI,
-        functionName: 'mint',
+        functionName: "mint",
       });
       setJustMinted(true);
       confetti();
     } catch (error) {
-      console.error('Error minting:', error);
+      console.error("Error minting:", error);
     } finally {
       setIsMinting(false);
     }
@@ -153,19 +152,22 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <main className="min-h-screen bg-[#0052FF] text-white flex items-center justify-center">
+      <main className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-white/60">Loading...</p>
+          <p className="">Loading...</p>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#0052FF] text-white">
-      <header className="fixed top-0 left-0 right-0 bg-[#0052FF]/80 backdrop-blur-sm border-b border-white/10 z-50">
-        <div className="max-w-2xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+    <main className="min-h-screen bg-white relative overflow-hidden">
+      <div className="absolute -bottom-80 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
+        <img src="/globe2.svg" alt="" />
+      </div>
+      <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-black/10 z-50">
+        <div className="max-w-3xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
           <div className="flex items-center gap-2 min-w-0">
             <Image
               src="/logo.png"
@@ -174,7 +176,7 @@ export default function Home() {
               height={32}
               className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0"
             />
-            <span className="font-medium text-sm sm:text-base truncate">
+            <span className="font-medium text-black text-sm sm:text-base truncate">
               Base Challenge
             </span>
           </div>
@@ -184,81 +186,24 @@ export default function Home() {
         </div>
       </header>
 
-      {/* <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-12">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Base Challenge POAP</h1>
-          <p className="text-lg sm:text-xl text-white/60">
-            Mint your POAP to commemorate participating in the Build on Base Challenge by Borderless Workshops!
-          </p>
-        </div>
-
-        <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8">
-          <Image
-            src="/hero.png"
-            alt="Hero image"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 p-4 text-center">
-            <div className="text-2xl sm:text-3xl font-bold">{totalMints}</div>
-            <div className="text-xs sm:text-sm text-white/60">Total POAPs Minted</div>
+      <div className="mx-auto w-full h-screen flex flex-col items-center justify-center max-w-3xl">
+        <div className="text-center flex flex-col gap-3 w-fit items-left text-black">
+          <h1 className="text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
+            A NEW DAY ONE
+          </h1>
+          <p className="font-light text-3xl text-left">Base's Next Chapter</p>
+          <div className="flex w-fit gap-2 items-center">
+            <div className="w-[180px] bg-[#0000ff] h-2"></div>
+            <div className="w-[40%] bg-[#f2accc] h-2"></div>
+            <div className="w-[20%] bg-[#ffda59] h-2"></div>
           </div>
-          <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 p-4">
-            <div className="text-xs sm:text-sm font-medium mb-2">Recent Mints</div>
-            <div className="space-y-1">
-              {recentMints.map((mint, i) => (
-                <div key={i} className="text-xs text-white/60 flex justify-between">
-                  <span>{mint.address.slice(0, 6)}...{mint.address.slice(-4)}</span>
-                  <span>{new Date(mint.timestamp).toLocaleTimeString()}</span>
-                </div>
-              ))}
-              {recentMints.length === 0 && (
-                <div className="text-xs text-white/40 text-center">No recent mints</div>
-              )}
-            </div>
-          </div>
+          {/* <p className="text-md text-left max-w-[340px] font-light">
+            Mint your POAP to commemorate participating in the Build on Base
+            Challenge by Borderless Workshops!
+          </p> */}
+          <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a day!</button>
         </div>
-
-        <div className="text-center">
-          {!address ? (
-            <p className="text-white/60 mb-4 text-sm sm:text-base">
-              Connect your wallet to mint
-            </p>
-          ) : hasMinted ? (
-            <div className="bg-white/10 rounded-xl p-6 mb-4">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">
-                🎉 You've already minted!
-              </h3>
-              <p className="text-white/60 text-sm sm:text-base">
-                Thank you for participating in the Base Challenge
-              </p>
-            </div>
-          ) : justMinted ? (
-            <div className="bg-white/10 rounded-xl p-6 mb-4">
-              <h3 className="text-lg sm:text-xl font-bold mb-2">🎉 Mint successful!</h3>
-              <p className="text-white/60 text-sm sm:text-base">
-                Your POAP has been minted to your wallet
-              </p>
-            </div>
-          ) : (
-            <button
-              onClick={handleMint}
-              disabled={isMinting || !address}
-              className={`w-full max-w-sm mx-auto px-8 py-3 sm:py-4 rounded-xl font-medium transition
-                ${isMinting
-                  ? 'bg-white/20 cursor-not-allowed'
-                  : 'bg-white hover:bg-white/90 text-[#0052FF] hover:scale-105'
-                }`}
-            >
-              {isMinting ? 'Minting...' : 'Mint POAP'}
-            </button>
-          )}
-        </div>
-      </div> */}
+      </div>
     </main>
   );
 }

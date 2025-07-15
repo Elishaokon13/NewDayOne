@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        doto: ['"Doto Variable"', "san-serif"],
+      },
       animation: {
         "fade-out": "1s fadeOut 3s ease-out forwards",
       },
