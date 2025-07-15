@@ -90,7 +90,7 @@ export default function Modal({ setModal }: any) {
                 ref={fileInputRef}
                 onChange={handleImageChange}
               />
-              <span className="text-gray-500">Click to upload image</span>
+              <span className="text-gray-500 text-xs">Click to upload image</span>
             </div>
           )}
         </div>

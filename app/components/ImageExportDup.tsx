@@ -1,15 +1,15 @@
 import React from "react";
 import DynamicSVG from "./DynamicSVG";
 
-export default function ImageExport({ image, username }: any) {
+export default function ImageExportDup({ image, username }: any) {
   return (
-    <div className="max-w-[660px] md:h-[600px] bg-white z-20 border p-5 text-black/80">
+    <div className="max-w-[660px] h-[600px] bg-white z-20 border p-5 text-black/80">
       <div className="flex flex-col w-full h-full items-center justify-between gap-6">
         <div className="flex items-center justify-between w-full gap-6 -mt-10">
           <p className="font-doto text-[56px]">.</p>
           <p className="font-doto text-[56px]">.</p>
         </div>
-        <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="w-full flex flex-row md:items-center justify-between gap-6">
           <div className="space-y-4">
             {/* <div className="relative">
               <img
@@ -23,7 +23,7 @@ export default function ImageExport({ image, username }: any) {
               <p className="text-[16px] text-[#0000ff] !italic font-light">
                 I will be attending...
               </p>
-              <h1 className=" text-[32px] md:text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
+              <h1 className="text-[56px] text-left max-w-[250px] leading-[56px] !font-doto font-bold">
                 A NEW DAY ONE
               </h1>
               <p className="font-light text-3xl text-left">
@@ -49,7 +49,7 @@ export default function ImageExport({ image, username }: any) {
           </div>
         </div>
         <div className="h-[160px] w-full bg-[url('/Group.svg')] bg-fill bg-center bg-no-repeat flex items-center p-6 justify-center">
-          <div className="w-full p-3 rounded-xl bg-[#0000ff] text-center font-doto uppercase text-white text-[22px] md:text-[38px]">
+          <div className="w-full p-3 rounded-xl bg-[#0000ff] text-center font-doto uppercase text-white text-[38px]">
             July 16th . Los Angeles
           </div>
         </div>

@@ -7,7 +7,6 @@ import { WalletConnect } from "./components/WalletConnect";
 import Image from "next/image";
 import { sdk } from "@farcaster/miniapp-sdk";
 import Modal from "./components/Modal";
-import ImageExport from "./components/ImageExport";
 
 // Contract address
 const CONTRACT_ADDRESS =
@@ -166,7 +165,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
-      <div className="absolute bottom-30 md:-bottom-60 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
+      <div className="absolute -bottom-10 md:-bottom-60 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
         <img src="/globe2.svg" alt="" />
       </div>
       <header className="fixed top-0 left-0 right-0 bg-white backdrop-blur-sm border-b border-black/10 z-50">
@@ -211,7 +210,6 @@ export default function Home() {
             Save a day!
           </button>
         </div>
-      {/* <ImageExport /> */}
       </div>
       {modal && <Modal setModal={setModal} />}
     </main>
