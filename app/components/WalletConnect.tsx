@@ -1,4 +1,4 @@
-// WalletConnect.jsx
+// components/WalletConnect.jsx
 import React, { useState, useEffect } from 'react';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
@@ -9,15 +9,12 @@ export function WalletConnect() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Ensure component is mounted before rendering modal to avoid hydration issues
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Detect if running in Farcaster Frames context
   const isFarcasterFrames = typeof window !== 'undefined' && window.location.href.includes('frames');
 
-  // Filter connectors based on context
   const availableConnectors = isFarcasterFrames
     ? connectors.filter((c) => c.id === 'farcasterMiniApp')
     : connectors.filter((c) => c.id === 'coinbaseWallet' || c.id === 'metaMask');
@@ -29,7 +26,7 @@ export function WalletConnect() {
   };
 
   if (!isMounted) {
-    return null; // Prevent rendering during hydration
+    return null;
   }
 
   if (isConnected) {
@@ -49,14 +46,15 @@ export function WalletConnect() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2 bg-white text-[#0052FF] font-medium rounded-lg hover:bg-white/90 transition-all duration-200 text-sm sm:text-base"
+        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-[#0052FF] font-medium rounded-lg hover:bg-white/90 transition-all duration-200 text-xs sm:text-sm"
       >
         Connect Wallet
       </button>
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 p-4"
           onClick={() => setIsOpen(false)}
+          style={{ backdropFilter: 'blur(5px)' }} // Optional: Adds a subtle blur to the background
         >
           <div
             className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full max-w-xs sm:max-w-md max-h-[90vh] overflow-y-auto"
@@ -64,7 +62,7 @@ export function WalletConnect() {
             role="dialog"
             aria-modal="true"
           >
-            <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 text-center">
               {isFarcasterFrames ? 'Connect with Farcaster' : 'Choose a Wallet'}
             </h3>
             {availableConnectors.map((connector) => (
@@ -75,7 +73,7 @@ export function WalletConnect() {
                   connect({ connector });
                   setIsOpen(false);
                 }}
-                className="w-full px-4 py-2 mb-2 text-sm sm:text-base text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md transition-all duration-200"
+                className="w-full px-4 py-2 mb-2 text-sm sm:text-base text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-md transition-all duration-200 flex items-center justify-center"
               >
                 {walletNames[connector.id] || connector.name}
               </button>
@@ -83,13 +81,13 @@ export function WalletConnect() {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="w-full px-4 py-2 text-sm sm:text-base text-gray-500 hover:text-gray-700"
+              className="w-full px-4 py-2 text-sm sm:text-base text-gray-500 hover:text-gray-700 mt-2"
               aria-label="Close modal"
             >
               Cancel
             </button>
             {error && (
-              <p className="mt-2 text-red-500 text-xs sm:text-sm">{error.message}</p>
+              <p className="mt-2 text-red-500 text-xs sm:text-sm text-center">{error.message}</p>
             )}
           </div>
         </div>
