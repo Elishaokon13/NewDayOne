@@ -13,6 +13,7 @@ export default function Modal({ setModal }: any) {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState<UserContext | null>(null);
   const [image, setImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false); // New loading state
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [save, setSave] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -44,6 +45,8 @@ export default function Modal({ setModal }: any) {
       return;
     }
 
+    setLoading(true); // Set loading to true when submission starts
+
     const formData = new FormData();
     formData.append("username", username);
     formData.append("profilePicture", selectedFile);
@@ -55,12 +58,12 @@ export default function Modal({ setModal }: any) {
       });
       if (!res.ok) throw new Error("Failed to save user");
       const data = await res.json();
-      // Optionally handle success (e.g., close modal, show message, etc.)
-      // alert("User saved!");
       console.log("Saved!!!");
       setSave(true);
     } catch (err) {
       alert("Error saving user");
+    } finally {
+      setLoading(false); // Set loading to false when submission completes
     }
   };
 
@@ -81,6 +84,7 @@ export default function Modal({ setModal }: any) {
             placeholder="Enter your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            disabled={loading} // Disable input during loading
           />
         </label>
         <div className="flex flex-col gap-2">
@@ -95,6 +99,7 @@ export default function Modal({ setModal }: any) {
               <button
                 className="absolute bottom-2 left-1/2 -translate-x-1/2 px-6 py-2 bg-[#0000ff]/80 font-light text-white rounded-lg font-medium hover:bg-blue-700 transition backdrop-blur-sm"
                 onClick={() => fileInputRef.current?.click()}
+                disabled={loading} // Disable upload button during loading
               >
                 Upload
               </button>
@@ -104,12 +109,13 @@ export default function Modal({ setModal }: any) {
                 className="hidden"
                 ref={fileInputRef}
                 onChange={handleImageChange}
+                disabled={loading} // Disable file input during loading
               />
             </div>
           ) : (
             <div
               className="border-2 w-40 h-40 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-400 transition"
-              onClick={() => fileInputRef.current?.click()}
+              onClick={() => !loading && fileInputRef.current?.click()} // Prevent click during loading
             >
               <input
                 type="file"
@@ -117,6 +123,7 @@ export default function Modal({ setModal }: any) {
                 className="hidden"
                 ref={fileInputRef}
                 onChange={handleImageChange}
+                disabled={loading} // Disable file input during loading
               />
               <span className="text-gray-500 text-xs">
                 Click to upload image
@@ -125,10 +132,13 @@ export default function Modal({ setModal }: any) {
           )}
         </div>
         <button
-          className="px-7 py-3 bg-[#0000FF] font-light text-white w-full hover:bg-blue-700 rounded-xl"
+          className={`px-7 py-3 bg-[#0000FF] font-light text-white w-full rounded-xl ${
+            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-700"
+          }`}
           onClick={handleSubmit}
+          disabled={loading} // Disable submit button during loading
         >
-          Save a day!
+          {loading ? "Saving..." : "Save a day!"} {/* Show loading text */}
         </button>
       </div>
       {save && <PrintImage image={image} username={username} />}
