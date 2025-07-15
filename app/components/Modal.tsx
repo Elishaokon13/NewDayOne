@@ -66,7 +66,7 @@ export default function Modal({ setModal }: any) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm text-black">
-      <div className="bg-white rounded-xl shadow-lg max-w-[420px] w-full p-8 flex flex-col gap-3">
+      <div className="bg-white rounded-xl shadow-lg max-w-[420px] w-full p-8 flex flex-col gap-3 mx-2">
         <div className="flex items-center justify-between gap-5">
           <h2 className="text-2xl font-semibold">Save a sit!</h2>
           <div className="cursor-pointer" onClick={() => setModal(false)}>
