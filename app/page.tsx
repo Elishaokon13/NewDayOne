@@ -184,7 +184,7 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-12">
+      {/* <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-12">
         <div className="text-center mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">Base Challenge POAP</h1>
           <p className="text-lg sm:text-xl text-white/60">
@@ -258,7 +258,7 @@ export default function Home() {
             </button>
           )}
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
