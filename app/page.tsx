@@ -216,7 +216,7 @@ export default function Home() {
 
       <div className="max-w-2xl mx-auto px-4 pt-24 pb-12">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">I</h1>
+          <h1 className="text-4xl font-bold mb-4"></h1>
           <p className="text-xl text-white/60">
             Mint your POAP to commemorate participating in the Build on Base Challenge by Borderless Workshops!
           </p>
