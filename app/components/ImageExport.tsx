@@ -1,10 +1,11 @@
 import React from "react";
+import DynamicSVG from "./DynamicSVG";
 
 export default function ImageExport() {
   return (
-    <div className="w-[760px] h-[760px] bg-white z-20 border p-5 text-black/80">
+    <div className="w-[660px] h-[600px] bg-white z-20 border p-5 text-black/80">
       <div className="flex flex-col w-full h-full items-center justify-between gap-6">
-        <div className="flex items-center justify-between w-full gap-6">
+        <div className="flex items-center justify-between w-full gap-6 -mt-10">
           <p className="font-doto text-[56px]">.</p>
           <p className="font-doto text-[56px]">.</p>
         </div>
@@ -33,9 +34,14 @@ export default function ImageExport() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-fit max-w-[300px] p-3 border border-gray-200 rounded-lg">
-            <img src="/subtract.svg" alt="" className="w-full h-full" />
-            <div className="w-full p-2 mt-2 rounded-xl bg-[#0000ff] text-center font-doto uppercase text-white text-[16px]">
+          <div className="w-fit h-fit max-w-[240px] p-3 border border-gray-200 rounded-lg relative">
+            <div className="relative w-full">
+              <div className="absolute top-0 left-0">
+                <div className="w-11 h-11 rounded-xl bg-[#ffda54]"></div>
+              </div>
+              <DynamicSVG bgImage={"/bggg.png"} width="full" height="full" />
+            </div>
+            <div className="w-full p-2 mt-2 rounded-xl bg-[#0000ff] text-center font-doto font-bold uppercase text-white text-[16px]">
               @Oxbryte
             </div>
           </div>
