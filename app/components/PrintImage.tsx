@@ -144,7 +144,7 @@ export default function PrintImage({ image, username }: any) {
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm text-black">
-        <div className="flex flex-col items-center gap-3 p-3 relative overflow-y-auto max-h-screen">
+        <div className="flex flex-col items-center gap-3 p-3 relative">
           <ImageExport image={image} username={username} />
           <div className="absolute opacity-[0%] -z-[10000]">
             <div ref={imageExportRef}>

@@ -8,10 +8,10 @@ export function WalletConnect() {
   const { disconnect } = useDisconnect();
   const [isOpen, setIsOpen] = useState(false);
 
-  const walletNames = {
-    'coinbaseWallet': 'Coinbase Smart Wallet',
-    'metaMask': 'MetaMask',
-    'farcasterMiniApp': 'Farcaster Mini App',
+  const walletNames: Record<string, string> = {
+    coinbaseWallet: "Coinbase Wallet",
+    metaMask: "MetaMask",
+    farcasterMiniApp: "Farcaster Mini App",
   };
 
   if (isConnected) {
@@ -47,7 +47,7 @@ export function WalletConnect() {
               }}
               className="w-full px-4 py-2 text-left text-sm text-gray-800 hover:bg-gray-100 transition-all duration-200"
             >
-              {walletNames[connector.id] || connector.name}
+              {connector.id in walletNames ? walletNames[connector.id] : connector.name}
             </button>
           ))}
         </div>
