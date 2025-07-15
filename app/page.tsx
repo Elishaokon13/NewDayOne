@@ -203,16 +203,12 @@ export default function Home() {
             Mint your POAP to commemorate participating in the Build on Base
             Challenge by Borderless Workshops!
           </p> */}
-<<<<<<< HEAD
-          <button className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl">Save a Seat!</button>
-=======
           <button
             className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl"
             onClick={() => setModal(true)}
           >
             Save a day!
           </button>
->>>>>>> e97e34d6839791e811b7917bf64e3f1493d2a609
         </div>
       </div>
       {modal && <Modal setModal={setModal} />}
