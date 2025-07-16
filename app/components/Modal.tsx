@@ -71,7 +71,7 @@ export default function Modal({ setModal }: any) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-sm text-black">
       <div className="bg-white rounded-xl shadow-lg max-w-[420px] w-full p-8 flex flex-col gap-3 mx-2">
         <div className="flex items-center justify-between gap-5">
-          <h2 className="text-2xl font-semibold">Save a sit!</h2>
+          <h2 className="text-2xl font-semibold">Save a seat!</h2>
           <div className="cursor-pointer" onClick={() => setModal(false)}>
             <X size={25} />
           </div>
@@ -138,7 +138,7 @@ export default function Modal({ setModal }: any) {
           onClick={handleSubmit}
           disabled={loading} // Disable submit button during loading
         >
-          {loading ? "Saving..." : "Save a day!"} {/* Show loading text */}
+          {loading ? "Saving..." : "Save a seat!"} {/* Show loading text */}
         </button>
       </div>
       {save && <PrintImage image={image} username={username} />}

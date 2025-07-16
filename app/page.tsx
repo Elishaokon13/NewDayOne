@@ -189,7 +189,7 @@ export default function Home() {
             className="px-7 py-2.5 bg-[#0000FF] font-light text-white w-fit rounded-xl"
             onClick={() => setModal(true)}
           >
-            Save a day!
+            Save a seat!
           </button>
         </div>
       </div>
