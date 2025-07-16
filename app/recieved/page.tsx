@@ -8,7 +8,7 @@ interface User {
 
 async function fetchUsers(): Promise<User[]> {
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3001";
-  const res = await fetch(`${baseUrl}/api/user`, { cache: "no-store" });
+  const res = await fetch('/api/user', { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch users");
   return res.json();
 }
