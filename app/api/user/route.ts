@@ -79,3 +79,17 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    await connectToDatabase();
+    const users = await User.find({});
+    return NextResponse.json(users);
+  } catch (error) {
+    console.error("Error in GET handler:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
